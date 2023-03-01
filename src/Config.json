@@ -1,0 +1,18 @@
+{
+  "baseUrl": "http://127.0.0.1:5000",
+  "pollLimit": 20,
+  "gatewayEPs": {
+    "reportEP": "/report"
+  },
+  "idmEPs": {
+    "loginEP": "/login",
+    "registerEP": "/register"
+  },
+  "experimentEPs": {
+    "startEP": "/experiment/start",
+    "memoryEP": "/memory",
+    "musicUpdateEP": "/music/update",
+    "expEndEP": "/experiment/end"
+
+  }
+}
