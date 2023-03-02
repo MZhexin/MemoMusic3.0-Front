@@ -1,4 +1,6 @@
 #!/bin/bash
+npm install
+npm run build
 basedir=$(cd "$(dirname "$0")";pwd);
 mkdir zip && rsync -a --exclude node_modules/ --exclude package-lock.json --exclude zip/ . ./zip && cd zip && npm install --production;
 cd $basedir;
