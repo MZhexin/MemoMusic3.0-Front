@@ -79,7 +79,41 @@ class Home extends Component {
     }
 
   }
+  
+  startNewExperiment = (v, a) => {
+    //console.log("in startNewExperiment");
+    //console.log(this.props.endDate);
+    Experiment.start(this.props.uId, this.props.expNum, v, a)
+      .then(response => {
+        //console.log(response);
+        if (response !== undefined){
+          this.setState({url: response.data.murl});
+          this.setState({mid: response.data.mid});
+          this.setState({step: this.state.step + 1});
+        }else{
+          alert("User not exist, please register!");
+        }
+      })
+      .catch(error => console.log(error));
+  };
+  
+  recordEachMusic = (v, a, rate, fam) => {
+    Experiment.musicUpdate(parseInt(this.props.uId), parseInt(this.props.expNum), this.state.songnum - 1, parseInt(this.state.mid), v, a, parseInt(rate), parseInt(fam))
+      .then(response => {
+        //console.log(response);
+        if (response !== undefined){
+          this.setState({url: response.data.murl});
+          this.setState({mid: response.data.mid});
+          this.setState({step: this.state.step + 1});
+        }else{
+          alert("Something wrong with musicUpdate, please check!");
+        }
+      })
+      .catch(error => console.log(error));
+  }
 
+  // 第二版的部分代码
+/*
   startNewExperiment = (v, a) => {
     //console.log("in startNewExperiment");
     //console.log(this.props.endDate);
@@ -116,6 +150,7 @@ class Home extends Component {
       .catch(error => console.log(error));
   };
 
+  
   recordEachMusic = (v, a, rate, fam) => {
     Experiment.musicUpdate(parseInt(this.props.uId), parseInt(this.props.expNum), this.state.songnum - 1, parseInt(this.state.mid), v, a, parseInt(rate), parseInt(fam))
       .then(response => {
@@ -149,7 +184,8 @@ class Home extends Component {
       })
       .catch(error => console.log(error));
   }
-
+*/
+  
   updateField = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
