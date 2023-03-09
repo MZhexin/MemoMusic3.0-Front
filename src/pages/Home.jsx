@@ -91,16 +91,16 @@ class Home extends Component {
           this.setState({mid: response.data.mid});
           
           const payload = { "musicIndex": this.state.mid };
-          var posturl = 'http://101.200.125.86:5001/ClassicalMusic';
+          var posturl = 'https://memomusic.oss-cn-beijing.aliyuncs.com/ClassicMusic';
           console.log('home.js utype');
           console.log(this.props.utype);
           if(this.props.utype == 2)
           {
-             posturl = 'http://101.200.125.86:5001/PopMusic';
+             posturl = 'https://memomusic.oss-cn-beijing.aliyuncs.com/PopularMusic';
           }
           if(this.props.utype == 3)
           {
-             posturl = 'http://101.200.125.86:5001/YanniMusic';
+             posturl = 'https://memomusic.oss-cn-beijing.aliyuncs.com/YanniMusic';
           }
           axios.post(posturl, payload)
           .then(response => {
